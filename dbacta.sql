@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-09-2021 a las 21:37:58
+-- Tiempo de generación: 10-09-2021 a las 21:47:56
 -- Versión del servidor: 10.6.4-MariaDB
 -- Versión de PHP: 7.3.29
 
@@ -34,6 +34,7 @@ CREATE TABLE `acta` (
   `hora_finalizacion` time DEFAULT NULL,
   `asunto` varchar(45) COLLATE utf8mb3_bin NOT NULL,
   `descripcion` varchar(45) COLLATE utf8mb3_bin DEFAULT NULL,
+  `estado` varchar(25) COLLATE utf8mb3_bin NOT NULL DEFAULT 'Pendiente',
   `id_creador_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
