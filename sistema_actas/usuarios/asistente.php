@@ -1,5 +1,5 @@
 <?php
-require 'infoActa.php';
+require 'infoAsistente.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -8,7 +8,7 @@ require 'infoActa.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creacion de actas</title>
+    <title>Creacion de asistentes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -24,7 +24,7 @@ require 'infoActa.php';
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Creación de Nueva Acta</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Creación de un nuevo asistente</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -34,42 +34,29 @@ require 'infoActa.php';
 
                             <div class="form-row">
 
-                            <div class="form-group col-md-12 ">
-                                    <label for="">Asunto:</label>
-                                    <input type="text" class="form-control" name="txtAsunto" required value="<?php echo $txtAsunto ?>" placeholder="" id="txt3" require="">
-                                    <br>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="">Fecha de Realizacion:</label>
-                                    <input type="date"  class="form-control" name="txtFechaRealizacion" required value="<?php echo $txtFechaRealizacion ?>" placeholder="" id="txt2" require="">
-                                    <br>
-                                </div>
-
-
-                                <div class="form-group col-md-6">
-                                    <label for="">Hora de Inicio:</label>
-                                    <input type="time" class="form-control" name="txtHoraInicio" required value="<?php echo $txtHoraInicio ?>" placeholder="" id="txt2" require="">
+                                <div class="form-group col-md-6 ">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" class="form-control" name="txtNombre" required value="<?php echo $txtNombre ?>" placeholder="" id="txt3" require="">
                                     <br>
                                 </div>
 
                                 <div class="form-group col-md-6 ">
-                                    <label for="">Hora de Finalización:</label>
-                                    <input type="time" class="form-control" name="txtHoraFinalizacion" value="<?php echo $txtHoraFinalizacion ?>" placeholder="" id="txt9" require="">
+                                    <label for="">Apellido:</label>
+                                    <input type="text" class="form-control" name="txtApellido" required value="<?php echo $txtApellido ?>" placeholder="" id="txt4" require="">
+
                                     <br>
                                 </div>
 
-                                
-
-                                <div class="form-group col-md-6 ">
-                                    <label for="">Descripcion:</label>
-                                    <input type="text" class="form-control" name="txtDescripcion" required value="<?php echo $txtDescripcion ?>" placeholder="" id="txt4" require="">
-                                
-                                    <br>
-                                </div>
                                 <div class="form-group col-md-6">
-                                    <label for="">ID de Creador:</label>
-                                    <input type="number" class="form-control" name="txtIdCreador" required value="<?php echo $txtIdCreador ?>" placeholder="" id="txt8" require="">
+                                    <label for="">Correo:</label>
+                                    <input type="email" class="form-control" name="txtCorreo" required value="<?php echo $txtCorreo ?>" placeholder="" id="txt2" require="">
+                                    <br>
+                                </div>
+
+
+                                <div class="form-group col-md-6">
+                                    <label for="">Acta a la que asiste:</label>
+                                    <input type="number" class="form-control" name="txtListaAsistente" required value="<?php echo $txtListaAsistente ?>" placeholder="" id="txt8" require="">
                                     <br>
                                 </div>
                             </div>
@@ -86,14 +73,14 @@ require 'infoActa.php';
             <br>
             <br>
             <button type="button" class="btn btn-primary linea" data-toggle="modal" data-target="#exampleModalCenter">
-                Agregar Acta
+                Agregar asistente
             </button>
             <a href="index.php" class="btn btn-primary linea">Crear Usuario</a>
-            <a href="asistente.php" class="btn btn-primary linea">Crear Asistente</a>
+            <a href="acta.php" class="btn btn-primary linea">Crear Acta</a>
             <a href="programa.php" class="btn btn-primary linea">Crear Programa</a>
             <a href="facultad.php" class="btn btn-primary linea">Crear facultad</a>
-        <br>
-        <br>
+            <br>
+            <br>
 
 
 
@@ -102,35 +89,25 @@ require 'infoActa.php';
             <table CLASS="table table-hover table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Id Acta</th>
-                        <th>Asunto</th>
-                        <th>Fecha de creacion</th>
-                        <th>Hora de Inicio</th>
-                        <th>Hora de Finalizacion</th>
-                        <th>Descripcion</th>
-                        <th>Creador</th>
+                        <th>Nombre Completo</th>
+                        <th>Correo</th>
+                        <th>Asiste a la acta</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
 
-                <?php foreach ($lista_acta as $acta) { ?>
+                <?php foreach ($lista_asistente as $asistente) { ?>
                     <tr>
-                        <td> <?php echo $acta['idacta'] ?> </td>
-                        <td> <?php echo $acta['asunto'] ?> </td>
-                        <td> <?php echo $acta['fecha_realizacion_acta'] ?> </td>
-                        <td> <?php echo $acta['hora_inicio'] ?> </td>
-                        <td> <?php echo $acta['hora_finalizacion'] ?> </td>
-                        <td> <?php echo $acta['descripcion'] ?> </td>
-                        <td> <?php echo $acta['nombre'] ?> <?php echo $acta['apellido'] ?> </td>
+                        <td> <?php echo $asistente['nombre'] ?> <?php echo $asistente['apellido'] ?> </td>
+                        <td> <?php echo $asistente['correo'] ?> </td>
+                        <td> <?php echo $asistente['nombre_acta'] ?> </td>
                         <td>
                             <form action="" method="post">
-                                <input type="hidden" name="txtId" value="<?php echo $acta['idacta'] ?>">
-                                <input type="hidden" name="txtAsunto" value="<?php echo $acta['asunto'] ?>">
-                                <input type="hidden" name="txtDescripcion" value="<?php echo $acta['descripcion'] ?>">
-                                <input type="hidden" name="txtFechaRealizacion" value="<?php echo $acta['fecha_realizacion_acta'] ?>">
-                                <input type="hidden" name="txtHoraInicio" value="<?php echo $acta['hora_inicio'] ?>">
-                                <input type="hidden" name="txtHoraFinalizacion" value="<?php echo $acta['hora_finalizacion'] ?> ">
-                                <input type="hidden" name="txtIdCreador" value="<?php echo $acta['id_creador_usuario'] ?>">
+                                <input type="hidden" name="txtId" value="<?php echo $asistente['idasistentes'] ?>">
+                                <input type="hidden" name="txtNombre" value="<?php echo $asistente['nombre'] ?>">
+                                <input type="hidden" name="txtApellido" value="<?php echo $asistente['apellido'] ?>">
+                                <input type="hidden" name="txtCorreo" value="<?php echo $asistente['correo'] ?>">
+                                <input type="hidden" name="txtListaAsistente" value="<?php echo $asistente['lista_asistente'] ?>">
                                 <input type="submit" value="Seleccionar" class="btn btn-info linea" name="accion">
                                 <button value="btnEliminar" type="submit" class="btn btn-danger linea" onclick="return confirmar('¿Quieres borrar este registro?')" name="accion">Eliminar</button>
                             </form>

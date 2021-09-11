@@ -20,7 +20,14 @@ switch ($accion) {
 
 
         $cadenaSQL = "INSERT INTO `acta`( `fecha_realizacion_acta`, `hora_inicio`, `hora_finalizacion`, `asunto`, `descripcion`, `id_creador_usuario`) 
-        VALUES (:fecha_realizacion_acta,:hora_inicio,:hora_finalizacion,:asunto,:descripcion,:id_creador_usuario)";
+        VALUES (:fecha_realizacion_acta,
+        :hora_inicio,
+        :hora_finalizacion,
+        :asunto,
+        :descripcion,
+        :id_creador_usuario)";
+
+
         $sentencia = $conexion->prepare($cadenaSQL);
         $sentencia->bindParam(':fecha_realizacion_acta', $txtFechaRealizacion);
         $sentencia->bindParam(':hora_inicio', $txtHoraInicio);
@@ -34,22 +41,23 @@ switch ($accion) {
 
     case "btnEditar":
 
-        $cadenaSQL = "UPDATE acta SET  
-        acta.`fecha_realizacion_acta`= :fecha_realizacion_acta,
-        acta.`hora_inicio`= :hora_inicio,
-        acta.`hora_finalizacion`= :hora_finalizacion,
-        acta.`asunto`= :asunto,
-        acta.`descripcion`= :descripcion,
-        acta.`id_creador_usuario`= :id_creador_usuario,
-        WHERE acta.idacta= :id";
+        $cadenaSQL = "UPDATE `acta` 
+        SET 
+        `fecha_realizacion_acta`=:fecha_realizacion_acta,
+        `hora_inicio`=:hora_inicio,
+        `hora_finalizacion`=:hora_finalizacion,
+        `asunto`=:asunto,
+        `descripcion`=:descripcion,
+        `id_creador_usuario`=:id_creador_usuario
+        WHERE idacta =:id";
 
         $sentencia2 = $conexion->prepare($cadenaSQL);
 
         $sentencia2->bindParam(':fecha_realizacion_acta', $txtFechaRealizacion);
         $sentencia2->bindParam(':hora_inicio', $txtHoraInicio);
         $sentencia2->bindParam(':hora_finalizacion', $txtHoraFinalizacion);
-        $sentencia2->bindParam(':asunto', $txtDescripcion);
-        $sentencia2->bindParam(':descripcion', $txtAsunto);
+        $sentencia2->bindParam(':asunto', $txtAsunto);
+        $sentencia2->bindParam(':descripcion', $txtDescripcion);
         $sentencia2->bindParam(':id_creador_usuario', $txtIdCreador);
         $sentencia2->bindParam(':id', $txtId);
         $sentencia2->execute();
@@ -61,8 +69,7 @@ switch ($accion) {
 
     case "btnEliminar":
 
-        $cadenaSQL = "DELETE FROM acta 
-        WHERE acta.idacta= :id";
+        $cadenaSQL = "DELETE FROM `acta` WHERE idacta =:id";
 
         $sentencia = $conexion->prepare($cadenaSQL);
         $sentencia->bindParam(':id', $txtId, PDO::PARAM_INT);

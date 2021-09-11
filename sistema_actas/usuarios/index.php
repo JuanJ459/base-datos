@@ -13,6 +13,7 @@ require 'usuario.php';
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/css.css">
 </head>
 
 <body>
@@ -114,6 +115,8 @@ require 'usuario.php';
             </button>
 
             <a href="acta.php" class="btn btn-primary linea">Crear Acta</a>
+            <a href="programa.php" class="btn btn-primary linea">Crear Programa</a>
+            <a href="facultad.php" class="btn btn-primary linea">Crear facultad</a>
             <br>
             <br>
 
@@ -124,6 +127,7 @@ require 'usuario.php';
             <table CLASS="table table-hover table-bordered">
                 <thead class="thead-dark">
                     <tr>
+                        <th>Id</th>
                         <th>Nombre Completo</th>
                         <th>Cedula</th>
                         <th>Correo</th>
@@ -136,6 +140,7 @@ require 'usuario.php';
 
                 <?php foreach ($listaUsuarios as $usuario) { ?>
                     <tr>
+                        <td> <?php echo $usuario['idusuarios'] ?> </td>
                         <td> <?php echo $usuario['nombre'] ?> <?php echo $usuario['apellido'] ?> </td>
                         <td> <?php echo $usuario['cedula'] ?> </td>
                         <td> <?php echo $usuario['correo'] ?> </td>
@@ -152,9 +157,12 @@ require 'usuario.php';
                                 <input type="hidden" name="txtPass" value="<?php echo $usuario['contrasena'] ?> ">
                                 <input type="hidden" name="txtIdPrograma" value="<?php echo $usuario['idprograma'] ?>">
                                 <input type="hidden" name="txtIdRol" value="<?php echo $usuario['idrol'] ?>">
-                                <input type="submit" value="Seleccionar" class="btn btn-info " name="accion">
+                            
+                                    <input type="submit" value="Seleccionar" class="linea btn btn-info" name="accion">
+                                    <br>
+                                    <button value="btnEliminar" type="submit" class="btn btn-danger linea" onclick="return confirmar('¿Quieres borrar este registro?')" name="accion">Eliminar</button>
+                                
                                 <br>
-                                <button value="btnEliminar" type="submit" class="btn btn-danger " onclick="return confirmar('¿Quieres borrar este registro?')" name="accion">Eliminar</button>
                             </form>
                         </td>
                     </tr>
