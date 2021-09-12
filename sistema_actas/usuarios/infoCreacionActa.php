@@ -1,5 +1,5 @@
 <?php
-require 'infoAsistente.php';
+require 'creacionActa.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -7,8 +7,8 @@ require 'infoAsistente.php';
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creacion de asistentes</title>
+    <meta name="viewport" content="width=desvice-width, initial-scale=1.0">
+    <title>Creacion de Acta</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -24,7 +24,7 @@ require 'infoAsistente.php';
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Creación de un nuevo asistente</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Creación de una Facultad</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -34,31 +34,22 @@ require 'infoAsistente.php';
 
                             <div class="form-row">
 
-                                <div class="form-group col-md-6 ">
-                                    <label for="">Nombre:</label>
-                                    <input type="text" class="form-control" name="txtNombre" required value="<?php echo $txtNombre ?>" placeholder="" id="txt3" require="">
+                                <div class="form-group col-md-12 ">
+                                    <label for="">Id Facultad:</label>
+                                    <input type="number" class="form-control" name="txtIdFacultad" required value="<?php echo $txtIdFacultad ?>" placeholder="" id="txt3" require="">
+                                    <br>
+                                </div>
+                                <div class="form-group col-md-12 ">
+                                    <label for="">Id Acta:</label>
+                                    <input type="number" class="form-control" name="txtIdActa" required value="<?php echo $txtIdActa ?>" placeholder="" id="txt3" require="">
+                                    <br>
+                                </div>
+                                <div class="form-group col-md-12 ">
+                                    <label for="">Id Programa:</label>
+                                    <input type="number" class="form-control" name="txtIdPrograma" required value="<?php echo $txtIdPrograma ?>" placeholder="" id="txt3" require="">
                                     <br>
                                 </div>
 
-                                <div class="form-group col-md-6 ">
-                                    <label for="">Apellido:</label>
-                                    <input type="text" class="form-control" name="txtApellido" required value="<?php echo $txtApellido ?>" placeholder="" id="txt4" require="">
-
-                                    <br>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="">Correo:</label>
-                                    <input type="email" class="form-control" name="txtCorreo" required value="<?php echo $txtCorreo ?>" placeholder="" id="txt2" require="">
-                                    <br>
-                                </div>
-
-
-                                <div class="form-group col-md-6">
-                                    <label for="">Acta a la que asiste:</label>
-                                    <input type="number" class="form-control" name="txtListaAsistente" required value="<?php echo $txtListaAsistente ?>" placeholder="" id="txt8" require="">
-                                    <br>
-                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -73,13 +64,11 @@ require 'infoAsistente.php';
             <br>
             <br>
             <button type="button" class="btn btn-primary linea" data-toggle="modal" data-target="#exampleModalCenter">
-                Agregar asistente
+                Agregar Facultad
             </button>
             <a href="index.php" class="btn btn-primary linea">Crear Usuario</a>
             <a href="acta.php" class="btn btn-primary linea">Crear Acta</a>
-            <a href="programa.php" class="btn btn-primary linea">Crear Programa</a>
-            <a href="facultad.php" class="btn btn-primary linea">Crear facultad</a>
-            <a href="infoCreacionActa.php" class="btn btn-primary linea">Asignar Acta</a>
+            <a href="programa.php" class="btn btn-primary linea">Crear programa</a>
 
             <br>
             <br>
@@ -91,25 +80,30 @@ require 'infoAsistente.php';
             <table CLASS="table table-hover table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Nombre Completo</th>
-                        <th>Correo</th>
-                        <th>Asiste a la acta</th>
+                        <th>Id Acta</th>
+                        <th>Nombre del Acta</th>
+                        <th>Id Programa</th>
+                        <th>Nombre Programa</th>
+                        <th>Id Facultad</th>
+                        <th>Nombre Facultad</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
 
-                <?php foreach ($lista_asistente as $asistente) { ?>
+                <?php foreach ($listaAC as $ac) { ?>
                     <tr>
-                        <td> <?php echo $asistente['nombre'] ?> <?php echo $asistente['apellido'] ?> </td>
-                        <td> <?php echo $asistente['correo'] ?> </td>
-                        <td> <?php echo $asistente['nombre_acta'] ?> </td>
+                        <td> <?php echo $ac['acta_idacta'] ?></td>
+                        <td> <?php echo $ac['anombre'] ?></td>
+                        <td> <?php echo $ac['programa_idprograma'] ?></td>
+                        <td> <?php echo $ac['pnombre'] ?></td>
+                        <td> <?php echo $ac['facultad_idfacultad'] ?></td>
+                        <td> <?php echo $ac['fnombre'] ?></td>
                         <td>
                             <form action="" method="post">
-                                <input type="hidden" name="txtId" value="<?php echo $asistente['idasistentes'] ?>">
-                                <input type="hidden" name="txtNombre" value="<?php echo $asistente['nombre'] ?>">
-                                <input type="hidden" name="txtApellido" value="<?php echo $asistente['apellido'] ?>">
-                                <input type="hidden" name="txtCorreo" value="<?php echo $asistente['correo'] ?>">
-                                <input type="hidden" name="txtListaAsistente" value="<?php echo $asistente['lista_asistente'] ?>">
+                                <input type="hidden" name="txtIdActa" value="<?php echo $ac['acta_idacta '] ?>">
+                                <input type="hidden" name="txtIdFacultad" value="<?php echo $ac['programa_idprograma'] ?>">
+                                <input type="hidden" name="txtIdPrograma" value="<?php echo $ac['facultad_idfacultad'] ?>">
+                        
                                 <input type="submit" value="Seleccionar" class="btn btn-info linea" name="accion">
                                 <button value="btnEliminar" type="submit" class="btn btn-danger linea" onclick="return confirmar('¿Quieres borrar este registro?')" name="accion">Eliminar</button>
                             </form>

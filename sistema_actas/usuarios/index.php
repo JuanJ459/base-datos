@@ -117,6 +117,7 @@ require 'usuario.php';
             <a href="acta.php" class="btn btn-primary linea">Crear Acta</a>
             <a href="programa.php" class="btn btn-primary linea">Crear Programa</a>
             <a href="facultad.php" class="btn btn-primary linea">Crear facultad</a>
+            <a href="infoCreacionActa.php" class="btn btn-primary linea">Asignar Acta</a>
             <br>
             <br>
 
