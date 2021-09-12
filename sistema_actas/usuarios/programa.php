@@ -66,6 +66,7 @@ require 'infoPrograma.php';
             <a href="index.php" class="btn btn-primary linea">Crear Usuario</a>
             <a href="acta.php" class="btn btn-primary linea">Crear Acta</a>
             <a href="facultad.php" class="btn btn-primary linea">Crear facultad</a>
+            
 
             <br>
             <br>
